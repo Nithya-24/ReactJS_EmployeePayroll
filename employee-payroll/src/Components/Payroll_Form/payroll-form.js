@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import './payroll-form.css';
 import ProfilePic1 from '../../assets/profile-images/Ellipse -1.png';
 import ProfilePic2 from '../../assets/profile-images/Ellipse -2.png';
 import ProfilePic3 from '../../assets/profile-images/Ellipse -3.png';
 import ProfilePic4 from '../../assets/profile-images/Ellipse -4.png';
-import {useParams, Link, withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import EmployeeService from "../Services/employee-service";
+
 
 const PayrollForm = (props) => {
 
@@ -59,12 +60,12 @@ const PayrollForm = (props) => {
             department: formValue.departmentValue,
             gender: formValue.gender,
             salary: formValue.salary,
-            startDate: '$(formValue.day} $(formValue.month) $(formValue.year}',
+            startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
             notes: formValue.notes,
             id: formValue.id,
             profileURL: formValue.profileURL,
-
         }
+        
         EmployeeService.addEmployee(object).then(data => {
             console.log("data added");
             PaymentResponse.history.push('')

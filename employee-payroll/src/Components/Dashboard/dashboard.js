@@ -1,31 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './dashboard.css';
-import ProfilePic1 from '../../assets/profile-images/Ellipse -1.png';
-import ProfilePic2 from '../../assets/profile-images/Ellipse -2.png';
-import ProfilePic3 from '../../assets/profile-images/Ellipse -4.png';
-import edit_btn from '../../assets/icons/create-black-18dp.svg';
-import delete_btn from '../../assets/icons/delete-black-18dp.svg';
-
 import {Link} from "react-router-dom";
+import Employee from "./employee";
+import axios from 'axios';
+import config from "../Config/config";
+
 
 function PayrollDashboard() {
+    const baseURL = config.baseUrl;
 
-    function update(){
-        console.log("update_data");
+    const [employeeArray, setEmployee] = useState([]);
+
+    useEffect(() => {
+        getAllEmployees();
+    },
+    []);
+
+    const getAllEmployees = () => {
+       axios.get(`${baseURL}employee`).then(employee => {
+           const allEmployees = employee.data;
+           setEmployee(allEmployees);
+       })
     }
-
-    function remove(){
-        console.log("remove_data");
-
-    }
-
+    
 
     return(
         <div className="main-content">
             <div className="header-content employee-header">
                 <div className="emp-detail-text">
                     Employee Details
-                    <div className="emp-count">3</div>
+                    <div className="emp-count"></div>
                 </div>
                 <Link to="/payroll-form" className="add-button">
                            Add Employee
@@ -33,7 +37,8 @@ function PayrollDashboard() {
             </div>
 
             <div className="table-main">
-                <table id="table-display" className="table">
+            <Employee employeeArray={employeeArray}/>
+                {/* <table id="table-display" className="table">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -59,8 +64,8 @@ function PayrollDashboard() {
                             <td>3500000</td>
                             <td>10 Jan 2016</td>
                             <td>
-                                <img src={edit_btn} alt="delete" id="1" onClick={remove(this)}/>
-                                <img src={delete_btn} alt="edit" id="1" onClick={update(this)}/>
+                                <img src={edit_btn} alt="delete" id="1" />
+                                <img src={delete_btn} alt="edit" id="1" />
                             </td>
                         </tr>
                         <tr>
@@ -75,8 +80,8 @@ function PayrollDashboard() {
                             <td>2500000</td>
                             <td>17 Feb 2017</td>
                             <td>
-                                <img src={edit_btn} alt="delete" id="2" onClick={remove(this)}/>
-                                <img src={delete_btn} alt="edit" id="2" onClick={update(this)}/>
+                                <img src={edit_btn} alt="delete" id="2" />
+                                <img src={delete_btn} alt="edit" id="2" />
                             </td>
                         </tr>
                         <tr>
@@ -91,12 +96,12 @@ function PayrollDashboard() {
                             <td>3000000</td>
                             <td>20 Mar 2018</td>
                             <td>
-                                <img src={edit_btn} alt="delete" id="3" onClick={remove(this)}/>
-                                <img src={delete_btn} alt="edit" id="3" onClick={update(this)}/>
+                                <img src={edit_btn} alt="delete" id="3" />
+                                <img src={delete_btn} alt="edit" id="3" />
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table> */}
             </div>
         </div>  
     )

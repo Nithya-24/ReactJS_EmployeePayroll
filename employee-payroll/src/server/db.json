@@ -1,0 +1,76 @@
+{
+  "employee": [
+    {
+      "name": "asda",
+      "department": [
+        "Finance"
+      ],
+      "gender": "male",
+      "salary": "416000",
+      "startDate": "3 4 2019",
+      "notes": "werw",
+      "profileURL": "../../assets/profile-images/Ellipse -2.png",
+      "id": 1604589731070
+    },
+    {
+      "name": "wtrt",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "420000",
+      "startDate": "1 3 2018",
+      "notes": "rey",
+      "profileURL": "../../assets/profile-images/Ellipse -2.png",
+      "id": 1604589731071
+    },
+    {
+      "name": "nithya",
+      "department": [
+        "Finance"
+      ],
+      "gender": "female",
+      "salary": "382700",
+      "startDate": "5 5 2017",
+      "notes": "New",
+      "profileURL": "../../assets/profile-images/Ellipse -1.png",
+      "id": 1604589731072
+    },
+    {
+      "name": "Jona",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "387200",
+      "startDate": "7 3 2018",
+      "notes": "Employee",
+      "profileURL": "../../assets/profile-images/Ellipse -3.png",
+      "id": 1604589731073
+    },
+    {
+      "name": "ewgfd",
+      "department": [
+        "Engineer"
+      ],
+      "gender": "male",
+      "salary": "388200",
+      "startDate": "1 Jan 2021",
+      "notes": "wer",
+      "profileURL": "../../assets/profile-images/Ellipse -2.png",
+      "id": 1604589731074
+    },
+    {
+      "name": "asda",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "379300",
+      "startDate": "5 4 2019",
+      "notes": "ewwr",
+      "profileURL": "../../assets/profile-images/Ellipse -2.png",
+      "id": 1604589731075
+    }
+  ]
+}
