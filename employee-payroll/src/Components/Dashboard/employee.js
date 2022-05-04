@@ -7,8 +7,36 @@ import ProfilePic2 from '../../assets/profile-images/Ellipse -2.png';
 import ProfilePic3 from '../../assets/profile-images/Ellipse -3.png';
 import ProfilePic4 from '../../assets/profile-images/Ellipse -4.png';
 import { withRouter } from "react-router-dom";
+import employeeService from "../Services/employee-service";
+import { toast } from "react-toastify";
 
 const Employee = (props) => {
+
+    const update = (id) => {
+    
+        props.history.push(`payroll-form/${id}`);
+   
+};
+
+const remove = (id) => {
+  employeeService
+    .deleteEmployee(id)
+    .then((data) => {
+      var answer = window.confirm("Do you want to Delete ?",data);
+      if(answer === true){
+          alert("Data deleted successfully!!");
+          window.location.reload();
+          props.getAllEmployees();
+      }
+      else{
+        window.location.reload();
+      }
+    })
+    .catch((error) => {
+      toast.error("Something Went Wrong!");
+    });
+};
+ 
 
      return (
         <table id="table-display" className="table">
@@ -47,12 +75,12 @@ const Employee = (props) => {
                             </td>
                             <td>{element.salary}</td>
                             <td>{element.startDate}</td>
-                            <td>
-                                <img src={editEmp} alt="delete" id="1"/>
-                                <img src={deleteEmp} alt="edit" id="1"/>
-                            </td>
-                       </tr> 
-                    ))
+                          
+                    <td><img onClick={() => remove(element.id)} src={deleteEmp} alt="delete" />
+                    <img onClick={() => update(element.id)} src={editEmp} alt="edit" />
+                    </td>
+                  </tr>
+                ))
                 }
         </table>
     );

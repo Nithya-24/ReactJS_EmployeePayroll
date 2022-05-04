@@ -14,7 +14,8 @@ function App() {
               <Switch>
                   <Route exact path="/" component={PayrollDashboard}></Route>
                   <Route exact path="/payroll-form" component={PayrollForm}></Route>
-                  <Route exact path="/dashboard" component={PayrollDashboard}></Route>
+                  <Route exact path="/payroll-form/:id" component={PayrollForm}></Route>
+                  {/* <Route exact path="/dashboard" component={PayrollDashboard}></Route> */}
               </Switch>
         </div>
       </Router>
