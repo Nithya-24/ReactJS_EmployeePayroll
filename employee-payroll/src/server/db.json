@@ -1,0 +1,28 @@
+{
+  "employee": [
+    {
+      "name": "nithya",
+      "department": [
+        "Engineer"
+      ],
+      "gender": "female",
+      "salary": "410600",
+      "startDate": "17 Oct 2019",
+      "notes": "wseq",
+      "id": 1,
+      "profileURL": "../../assets/profile-images/Ellipse -1.png"
+    },
+    {
+      "name": "Ram",
+      "department": [
+        "Engineer"
+      ],
+      "gender": "male",
+      "salary": "362800",
+      "startDate": "17 Aug 2019",
+      "notes": "Employee",
+      "id": 2,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    }
+  ]
+}
