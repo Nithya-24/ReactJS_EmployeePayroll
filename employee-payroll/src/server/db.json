@@ -1,41 +1,28 @@
 {
   "employee": [
     {
-      "name": "Nithya",
+      "name": "nithya",
       "department": [
-        "Finance",
-        "Sales"
+        "Engineer"
       ],
       "gender": "female",
-      "salary": "351300",
-      "startDate": "15 Jul 2019",
-      "notes": "zxfa",
-      "id": 2,
-      "profileURL": "../../assets/profile-images/Ellipse -4.png"
+      "salary": "410600",
+      "startDate": "17 Oct 2019",
+      "notes": "wseq",
+      "id": 1,
+      "profileURL": "../../assets/profile-images/Ellipse -1.png"
     },
     {
-      "name": "qwer",
+      "name": "Ram",
       "department": [
-        "HR"
-      ],
-      "gender": "female",
-      "salary": "421300",
-      "startDate": "17 Feb 2018",
-      "notes": "kjok",
-      "id": 3,
-      "profileURL": "../../assets/profile-images/Ellipse -4.png"
-    },
-    {
-      "name": "kowsiv",
-      "department": [
-        "Finance"
+        "Engineer"
       ],
       "gender": "male",
-      "salary": "394700",
-      "startDate": "19 Dec 2016",
-      "notes": "daqq",
-      "id": 4,
-      "profileURL": "../../assets/profile-images/Ellipse -2.png"
+      "salary": "362800",
+      "startDate": "17 Aug 2019",
+      "notes": "Employee",
+      "id": 2,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
     }
   ]
 }
