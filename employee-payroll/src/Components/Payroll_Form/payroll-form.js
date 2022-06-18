@@ -9,6 +9,7 @@ import {useParams} from "react-router-dom";
 import EmployeeService from "../Services/employee-service";
 
 const PayrollForm = (props) => {
+    console.log(props)
    let initialValue = {
        name: '',
        profilePicArray: [
@@ -44,7 +45,7 @@ const PayrollForm = (props) => {
 
     const getEmployeeByID = (id) => {
         EmployeeService.getEmployee(id).then((response) => {
-            let obj = response.data;
+            let obj = response.data.data;
             console.log(obj);
             setData(obj);
         }).catch((error) => {
@@ -59,17 +60,18 @@ const PayrollForm = (props) => {
             ...formValue,
             ...obj,
             isUpdate: true,
-            id: obj.id,
+            id: obj.empId,
             name: obj.name,
-            profileURL: obj.profileURL,
+            profileURL: obj.profilePic,
             gender: obj.gender,
             departmentValue: obj.department,
             salary: obj.salary,
             day: array[0] + array[1],
             month: array[3] + array[4] + array[5],
             year: array[7] + array[8] + array[9] + array[10],
-            notes: obj.notes,
+            notes: obj.note,
         });
+        console.log(array);
     }
 
     useEffect(() => {
@@ -148,9 +150,8 @@ const PayrollForm = (props) => {
               gender: formValue.gender,
               salary: formValue.salary,
               startDate: `${formValue.day} ${formValue.month} ${formValue.year}`,
-              notes: formValue.notes,
-              id: formValue.id,
-              profileURL: formValue.profileURL,
+              note: formValue.notes,
+              profilePic: formValue.profileURL,
           }
           if (formValue.isUpdate) {
               EmployeeService.updateEmployee(params.id, object).then((response) => {
@@ -161,8 +162,9 @@ const PayrollForm = (props) => {
               })
           }
           else {
-              EmployeeService.addEmployee(object).then(() => {
-                  console.log("data added successfully");
+              EmployeeService.addEmployee(object).then((response) => {
+                  console.log("data added successfully", response.data.data);
+                  alert("Data added successfully");
                   props.history.push('');
               }).catch((error) => {
                   alert(error);
@@ -250,6 +252,7 @@ const PayrollForm = (props) => {
                    <label className="label text" htmlFor="startDate">Start Date</label>
                    <div>
                        <select id="day" name="day" onChange={changeValue} value={formValue.day}>
+                       <option value="" disabled selected>Day</option>
                            <option value="1">1</option>
                            <option value="2">2</option>
                            <option value="3">3</option>
@@ -283,6 +286,7 @@ const PayrollForm = (props) => {
                            <option value="31">31</option>
                        </select>
                        <select id="month" name="month" onChange={changeValue} value={formValue.month}>
+                       <option value="" disabled selected>Month</option>
                            <option value="Jan">January</option>
                            <option value="Feb">February</option>
                            <option value="Mar">March</option>
@@ -297,6 +301,7 @@ const PayrollForm = (props) => {
                            <option value="Dec">December</option>
                        </select>
                        <select id="year" name="year" onChange={changeValue} value={formValue.year}>
+                       <option value="" disabled selected>year</option>
                            <option value="2021">2021</option>
                            <option value="2020">2020</option>
                            <option value="2019">2019</option>

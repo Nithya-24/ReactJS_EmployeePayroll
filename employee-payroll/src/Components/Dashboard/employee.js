@@ -12,31 +12,40 @@ import { toast } from "react-toastify";
 
 const Employee = (props) => {
 
-    const update = (id) => {
+    const update = (empId) => {
     
-        props.history.push(`payroll-form/${id}`);
+        props.history.push(`payroll-form/${empId}`);
    
 };
 
-const remove = (id) => {
-  employeeService
-    .deleteEmployee(id)
-    .then((data) => {
-      var answer = window.confirm("Do you want to Delete ?",data);
-      if(answer === true){
-          alert("Data deleted successfully!!");
-          window.location.reload();
-          props.getAllEmployees();
-      }
-      else{
-        window.location.reload();
-      }
-    })
-    .catch((error) => {
-      toast.error("Something Went Wrong!");
-    });
-};
+const remove = (empId) => {
+  console.log(empId);
+  const response = employeeService.deleteEmployee(empId);
+  console.log(response);
+  window.location.reload();
+  return response;
+}
+
+// const remove = (id) => {
+//   employeeService
+//     .deleteEmployee(id)
+//     .then((data) => {
+//       var answer = window.confirm("Do you want to Delete ?",data);
+//       if(answer === true){
+//           alert("Data deleted successfully!!");
+//           window.location.reload();
+//           props.getAllEmployees();
+//       }
+//       else{
+//         window.location.reload();
+//       }
+//     })
+//     .catch((error) => {
+//       toast.error("Something Went Wrong!");
+//     });
+// };
  
+  console.log(props.employeeArray)
 
      return (
         <table id="table-display" className="table">
@@ -53,15 +62,15 @@ const remove = (id) => {
                 {
                     props.employeeArray && props.employeeArray.map((element, index) =>(
                        <tr key={index}>
-                            <td>{element.id}</td>
+                            <td>{element.empId}</td>
                             
-                            <td><img className="profile" src={element.profileURL===
+                            <td><img className="profile" src={element.profilePic===
                             "../../assets/profile-images/Ellipse -1.png"
                             ? ProfilePic1
-                            : element.profileURL ===
+                            : element.profilePic ===
                               "../../assets/profile-images/Ellipse -2.png"
                             ? ProfilePic2
-                            : element.profileURL ===
+                            : element.profilePic ===
                               "../../assets/profile-images/Ellipse -3.png"
                             ? ProfilePic3
                             : ProfilePic4
@@ -76,8 +85,8 @@ const remove = (id) => {
                             <td>{element.salary}</td>
                             <td>{element.startDate}</td>
                           
-                    <td><img onClick={() => remove(element.id)} src={deleteEmp} alt="delete" />
-                    <img onClick={() => update(element.id)} src={editEmp} alt="edit" />
+                    <td><img onClick={() => remove(element.empId)} src={deleteEmp} alt="delete" />
+                    <img onClick={() => update(element.empId)} src={editEmp} alt="edit" />
                     </td>
                   </tr>
                 ))

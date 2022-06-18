@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import Employee from "./employee";
 import axios from 'axios';
 import config from "../Config/config";
+import employeeService from "../Services/employee-service";
 
 
 function PayrollDashboard() {
@@ -17,8 +18,9 @@ function PayrollDashboard() {
     []);
 
     const getAllEmployees = () => {
-       axios.get(`${baseURL}employee`).then(employee => {
-           const allEmployees = employee.data;
+       employeeService.getAllEmployees().then(employee => {
+           const allEmployees = employee.data.data;
+           console.log(allEmployees);
            setEmployee(allEmployees);
        })
     }
